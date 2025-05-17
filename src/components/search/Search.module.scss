@@ -1,0 +1,168 @@
+@import '../../styles/variables.scss';
+
+.searchContainer {
+  @include card;
+  margin-bottom: $spacing-xl;
+  border-radius: $border-radius-lg;
+  box-shadow: var(--card-shadow);
+}
+
+.searchForm {
+  @include flex(column, flex-start, stretch);
+  gap: $spacing-md;
+  
+  @include responsive-md {
+    flex-direction: column;
+  }
+}
+
+.searchInput {
+  position: relative;
+  
+  input {
+    width: 100%;
+    padding: $spacing-md;
+    border: 2px solid $border-color;
+    border-radius: $border-radius-md;
+    font-size: $font-size-md;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: 0 0 0 3px rgba($primary-color, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+  }
+}
+
+.errorMessage {
+  color: $error-color;
+  font-size: $font-size-sm;
+  margin-top: $spacing-xs;
+  font-weight: 500;
+}
+
+.shareContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: $spacing-md;
+  position: relative;
+}
+
+.shareButton {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  svg {
+    font-size: $font-size-md;
+  }
+}
+
+.shareTooltip {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  background-color: $text-color;
+  color: white;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 10;
+  animation: fadeIn 0.3s ease-in-out;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: $spacing-lg;
+    border-width: 5px;
+    border-style: solid;
+    border-color: $text-color transparent transparent transparent;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.historyContainer {
+  margin-top: $spacing-lg;
+  
+  h3 {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-md;
+    color: $text-color;
+    font-weight: 600;
+  }
+}
+
+.historyList {
+  @include flex(row, flex-start, center);
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+}
+
+.historyItem {
+  @include flex(row, space-between, center);
+  background-color: $secondary-color;
+  color: white;
+  border: none;
+  border-radius: $border-radius-md;
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .historyText {
+    margin-right: $spacing-md;
+    font-weight: 500;
+    color: white;
+  }
+  
+  .deleteButton {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    font-size: $font-size-md;
+    padding: 1px;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: white;
+    }
+  }
+} 

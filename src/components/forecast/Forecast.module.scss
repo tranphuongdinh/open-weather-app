@@ -1,0 +1,104 @@
+@import '../../styles/variables.scss';
+
+.forecastTitle {
+  font-size: $font-size-xl;
+  margin-bottom: $spacing-lg;
+  color: $primary-color;
+  font-weight: 600;
+}
+
+.forecastList {
+  @include flex(column, flex-start, stretch);
+  gap: $spacing-lg;
+}
+
+.forecastDay {
+  margin-bottom: $spacing-xl;
+  
+  .dayHeader {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 1px solid $border-color;
+    color: $primary-color;
+    font-weight: 600;
+  }
+}
+
+.forecastItems {
+  @include flex(column, flex-start, stretch);
+  gap: $spacing-md;
+}
+
+.forecastItem {
+  @include flex(row, space-between, center);
+  padding: $spacing-md;
+  border-radius: $border-radius-md;
+  background-color: $primary-color;
+  color: white;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  @include responsive-md {
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+  
+  .forecastTime {
+    min-width: 80px;
+    font-weight: 600;
+    color: white;
+  }
+  
+  .forecastIcon {
+    img {
+      width: 50px;
+      height: 50px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+  }
+  
+  .forecastTemp {
+    @include flex(row, center, center);
+    gap: $spacing-md;
+    
+    .minTemp, .maxTemp {
+      @include flex(column, center, center);
+      
+      .label {
+        font-size: $font-size-xs;
+        color: rgba(255, 255, 255, 0.85);
+        font-weight: 500;
+      }
+      
+      .value {
+        font-size: $font-size-md;
+        font-weight: 600;
+        color: white;
+      }
+    }
+    
+    .maxTemp .value {
+      color: white;
+    }
+  }
+  
+  .forecastDescription {
+    min-width: 120px;
+    text-align: right;
+    color: white;
+    text-transform: capitalize;
+    font-weight: 500;
+    
+    @include responsive-md {
+      width: 100%;
+      text-align: left;
+    }
+  }
+} 
